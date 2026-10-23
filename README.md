@@ -2,9 +2,11 @@
 
 基于 **NISTIR 5078 表 1、2、3** 和 **Feistel & Wagner (2006) 表 11、18、19、20** 的可追溯数值表重建。没有使用 CoolProp、IAPWS、REFPROP，也没有实现状态方程或理想气体补点。
 
+**[在线体验：打开交互式水相图](https://zhouxin66.github.io/water-pvt-atlas/)**
+
 ## 直接使用
 
-下载仓库后，用桌面版 **Chrome 或 Edge 打开 `dist/index.html`**。物性数据、Plotly.js 和界面脚本均已内嵌，使用时无需联网或安装 Python。点击“导出 PNG”可选择保存位置；也可导出完整模型 JSON。
+点击上方链接即可在线使用。需要离线使用时，下载仓库并用桌面版 **Chrome 或 Edge 打开 `dist/index.html`**。物性数据、Plotly.js 和界面脚本均已内嵌，离线使用无需联网或安装 Python。点击“导出 PNG”可选择保存位置；也可导出完整模型 JSON。
 
 首次使用可先在左侧选择相区，再用顶部按钮切换三维或二维视图。点击曲面查看状态及表格来源；“曲面不透明度”仅调整显示效果，数值越高颜色越实。
 
