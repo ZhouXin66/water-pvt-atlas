@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "checks": 11540,
+  "max_table3_density_volume_relative_error": 5.234400000009298e-05,
+  "rows": {
+    "table1": 375,
+    "table2": 272,
+    "table3": 9524,
+    "table11": 164,
+    "table19": 26,
+    "table20": 30
+  },
+  "notes": [
+    "Printed table precision, not EOS precision",
+    "No accuracy claim for geometric interpolation",
+    "Conservative gaps intentionally retained"
+  ]
+}

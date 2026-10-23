@@ -1,0 +1,30 @@
+{
+  "ice": {
+    "vertices": 65,
+    "triangles": 35
+  },
+  "liquid": {
+    "vertices": 3579,
+    "triangles": 6268
+  },
+  "vapor": {
+    "vertices": 4597,
+    "triangles": 8185
+  },
+  "supercritical": {
+    "vertices": 418,
+    "triangles": 740
+  },
+  "lv": {
+    "vertices": 37401,
+    "triangles": 71784
+  },
+  "sl": {
+    "vertices": 1025,
+    "triangles": 1920
+  },
+  "sv": {
+    "vertices": 2925,
+    "triangles": 5568
+  }
+}

@@ -1,0 +1,272 @@
+/* Readable desktop layout with a compact chart and a comfortable control rail. */
+:root {
+  color-scheme: dark;
+  --bg: #0a1523;
+  --panel: #122235;
+  --edge: #30465a;
+  --text: #eef6fc;
+  --muted: #aec2d0;
+  --accent: #78dfcc;
+}
+body {
+  font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+}
+header {
+  height: 86px;
+  padding: 13px 26px;
+  gap: 20px;
+  background: #0b1827;
+}
+h1 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 5px 16px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: .025em;
+  line-height: 1.25;
+}
+h1 span {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: .18em;
+  margin-bottom: 5px;
+}
+.badge {
+  flex: none;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.app {
+  height: calc(100vh - 86px);
+  grid-template-columns: 308px minmax(0, 1fr);
+}
+aside {
+  padding: 18px 20px 24px;
+  scrollbar-color: #42657a transparent;
+}
+.aside-intro {
+  margin: 0 0 18px;
+  padding: 11px 13px;
+  border: 1px solid #2d4b5c;
+  border-radius: 9px;
+  background: #193145;
+  color: #d3e7f1;
+  font-size: 12px;
+  line-height: 1.6;
+}
+section {
+  margin-bottom: 20px;
+  padding-bottom: 19px;
+}
+h2 {
+  margin-bottom: 13px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .025em;
+}
+.phase {
+  min-height: 31px;
+  margin: 2px -7px;
+  padding: 4px 7px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.phase:hover,
+.check:hover { background: #1c3447; }
+.phase small {
+  color: var(--muted);
+  font-size: 11px;
+}
+.dot { width: 10px; height: 10px; }
+.check {
+  min-height: 26px;
+  margin: 8px -6px;
+  padding: 3px 6px;
+  border-radius: 6px;
+  color: #d7e7f0;
+  font-size: 13px;
+  cursor: pointer;
+}
+input[type=checkbox] {
+  width: 15px;
+  height: 15px;
+  margin: 0 3px 0 0;
+  vertical-align: -2px;
+  accent-color: var(--accent);
+}
+.row { gap: 10px; margin: 11px 0; }
+.row label,
+.field-label {
+  color: #c8dbe7;
+  font-size: 13px;
+}
+.field-label {
+  display: block;
+  margin: 14px 0 6px;
+}
+button,
+select {
+  min-height: 36px;
+  padding: 7px 10px;
+  border-color: #426078;
+  background: #1a3045;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.4;
+}
+button:hover,
+select:hover { background: #24435a; }
+button.active {
+  background: #1d5f59;
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 700;
+}
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid #b2f6e8;
+  outline-offset: 2px;
+}
+select.full { width: 100%; }
+input[type=range] { min-height: 24px; cursor: pointer; }
+.subtle {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+.control-help { margin-top: 7px; }
+.readout {
+  margin: 11px 0;
+  padding: 11px 13px;
+  border-color: #375266;
+}
+.metric { font-size: 19px; }
+.action-row { justify-content: flex-start; }
+.action-row button { flex: 1; }
+.source-action {
+  width: 100%;
+  border-color: #477a75;
+  color: #c6f3e9;
+}
+.toolbar {
+  gap: 10px 18px;
+  padding: 13px 20px 0;
+}
+.tabs { flex-wrap: wrap; gap: 6px; }
+.tabs button { min-height: 36px; padding: 7px 12px; font-size: 13px; }
+.actions { margin-left: auto; }
+.viewnote {
+  margin: 10px 20px 0;
+  padding: 8px 12px;
+  border-left: 2px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  background: #14293b;
+  color: #c9dce8;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.plotwrap { min-height: 320px; }
+.footer {
+  gap: 6px 22px;
+  padding: 10px 20px;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.footer strong { font-weight: 700; }
+.detail {
+  width: min(365px, calc(100% - 32px));
+  max-height: 74%;
+  right: 16px;
+  padding: 17px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.detail h3 { font-size: 16px; }
+.detail pre {
+  overflow-wrap: anywhere;
+  font-size: 11px;
+  line-height: 1.45;
+}
+dialog {
+  width: min(880px, calc(100vw - 36px));
+  padding: 28px 32px;
+  font-size: 14px;
+  line-height: 1.75;
+  overflow: auto;
+}
+dialog h3 { font-size: 16px; }
+dialog table { min-width: 650px; font-size: 13px; }
+dialog td,
+dialog th { vertical-align: top; }
+.tip { font-size: 13px; line-height: 1.7; }
+@media (max-width: 1050px) {
+  .app { grid-template-columns: 275px minmax(0, 1fr); }
+  aside { padding: 16px; }
+  .toolbar { padding-left: 14px; padding-right: 14px; }
+  .viewnote { margin-left: 14px; margin-right: 14px; }
+}
+@media (max-width: 800px) {
+  header { height: auto; min-height: 80px; }
+  .app { height: auto; display: flex; flex-direction: column; }
+  main { height: 72vh; min-height: 550px; order: -1; }
+  aside {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 22px;
+    border-top: 1px solid var(--edge);
+  }
+  .aside-intro,
+  .source-action,
+  #counts { grid-column: 1 / -1; }
+  .aside-intro { margin: 0; }
+  section { margin: 0; }
+  .footer { gap: 4px 14px; }
+}
+@media (max-width: 600px) {
+  header { padding: 13px 16px; }
+  h1 { font-size: 20px; }
+  h1 span { display: block; width: 100%; font-size: 12px; }
+  .badge { display: none; }
+  main { height: 78vh; min-height: 510px; }
+  aside { grid-template-columns: 1fr; gap: 0; }
+  .toolbar { padding: 10px 12px 0; }
+  .tabs button { min-height: 34px; padding: 6px 9px; font-size: 12px; }
+  .actions { margin-left: 0; }
+  .viewnote { margin: 9px 12px 0; }
+  .footer { padding: 8px 12px; font-size: 11px; }
+  .detail { right: 8px; top: 8px; }
+  dialog { padding: 22px 18px; }
+  dialog table { display: block; min-width: 0; width: 100%; }
+  dialog tr:first-child { display: none; }
+  dialog tr {
+    display: block;
+    margin: 0 0 12px;
+    border: 1px solid var(--edge);
+    border-radius: 8px;
+  }
+  dialog td { display: block; border: 0; border-bottom: 1px solid var(--edge); }
+  dialog td:last-child { border-bottom: 0; }
+  dialog td::before {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+  }
+  dialog td:nth-child(1)::before { content: "来源"; }
+  dialog td:nth-child(2)::before { content: "使用字段与单位"; }
+  dialog td:nth-child(3)::before { content: "覆盖与用途"; }
+}

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="水滴图标">
+  <rect x="2" y="2" width="60" height="60" rx="15" fill="#10283b" stroke="#426c77" stroke-width="2"/>
+  <path d="M32 8C26 19 14 29 14 40a18 18 0 0 0 36 0C50 29 38 19 32 8Z" fill="#78dfcc"/>
+  <path d="M23 38c1-6 5-12 9-18" fill="none" stroke="#e7fff9" stroke-linecap="round" stroke-width="4" opacity=".85"/>
+</svg>

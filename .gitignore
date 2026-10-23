@@ -1,0 +1,13 @@
+.venv/
+.vendor/
+node_modules/
+__pycache__/
+tests/downloads/
+tests/legacy_exports/
+tests/*.png
+tests/*.json
+raw_data/*
+!raw_data/manifest.json
+water-pvt-project.zip
+.local/
+exports/

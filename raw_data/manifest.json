@@ -1,0 +1,47 @@
+{
+  "retrieved_utc": "2026-10-21T08:45:29.768388+00:00",
+  "sources": [
+    {
+      "file": "nist_index.html",
+      "url": "https://www.nist.gov/system/files/documents/srd/NISTIR5078.htm",
+      "bytes": 2522,
+      "sha256": "8304a3b52f9023a9c536e3486c5364898df2a59359131e90057989d719f4a918"
+    },
+    {
+      "file": "nist_table1.pdf",
+      "url": "https://www.nist.gov/system/files/documents/srd/NISTIR5078-Tab1.pdf",
+      "bytes": 84823,
+      "sha256": "8134235cf070ad053f006d4e98ebdccd12a621ad86fb3752d38bbce0fbb9cf1f"
+    },
+    {
+      "file": "nist_table2.pdf",
+      "url": "https://www.nist.gov/system/files/documents/srd/NISTIR5078-Tab2.pdf",
+      "bytes": 60526,
+      "sha256": "8e10fee5d5e358b2cb4d03b2fd1e838959177354677c6f206340eb811e9adc5b"
+    },
+    {
+      "file": "nist_table3.pdf",
+      "url": "https://www.nist.gov/system/files/documents/srd/NISTIR5078-Tab3.pdf",
+      "bytes": 645638,
+      "sha256": "6bfea55b2cacad5ff3fc4cbc7d041afe840a3156f8f1313e9cdee86ba064b66a"
+    },
+    {
+      "file": "nist_notes.pdf",
+      "url": "https://www.nist.gov/system/files/documents/srd/NISTIR5078-Text.pdf",
+      "bytes": 15577,
+      "sha256": "7a797707cb0a18760948ed2bd2e5b52b8105c9b499d048a1750d2d536104681b"
+    },
+    {
+      "file": "feistel_wagner_2006.pdf",
+      "url": "https://www.teos-10.org/pubs/Feistel_and_Wagner_2006.pdf",
+      "bytes": 449899,
+      "sha256": "bc8a8e29c5bada0a56c852db6f49cd63655b866bf795120f021f8b33cc70de18"
+    },
+    {
+      "file": "nist_rights.html",
+      "url": "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications",
+      "bytes": 93570,
+      "sha256": "f025c1bde63ccc6cd27a44c34e9e3a7da22a40f92038136d68bfe831dba62ff7"
+    }
+  ]
+}
