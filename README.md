@@ -4,13 +4,9 @@
 
 ## 直接使用
 
-用桌面版 **Chrome 或 Edge 双击 `dist/index.html`** 即可打开。全部数据、Plotly.js 和界面脚本内嵌在约 15 MB 的 HTML 中，无需联网或 Python。点击“导出 PNG”会打开“另存为”，可选择目录和文件名；建议文件名包含视图和本地导出时间，例如 `water-pvt-tv-20261023-143025.png`。
+下载仓库后，用桌面版 **Chrome 或 Edge 打开 `dist/index.html`**。物性数据、Plotly.js 和界面脚本均已内嵌，使用时无需联网或安装 Python。点击“导出 PNG”可选择保存位置；也可导出完整模型 JSON。
 
 首次使用可先在左侧选择相区，再用顶部按钮切换三维或二维视图。点击曲面查看状态及表格来源；“曲面不透明度”仅调整显示效果，数值越高颜色越实。
-
-浏览器标签图标只在构建时设置，网页没有供访问者修改的入口。把自己设计的图片命名为 `favicon.png`、`favicon.jpg` 或 `favicon.jpeg`，放到 `web/` 目录，再运行 `python scripts/build_html.py`。构建时会将图片缩为 128×128 像素并内嵌进 `dist/index.html`，原图不变。若同时存在多个文件，优先顺序为 PNG、JPG、JPEG；没有这些图片时使用默认的 `web/favicon.svg`。JPG 不支持透明背景，需要透明效果时选 PNG 或 SVG。发布时只需发布生成的 HTML。如果重新构建后标签仍显示旧图标，请关闭旧标签，再重新打开 `dist/index.html`；也要确认打开的不是旧版 HTML 副本。
-
-`Start-Water-PVT.cmd` 或 `python launch.py` 是可选的本机网页启动方式，需要 Python 3。它们不负责保存 PNG，也不会创建 `exports`。旧版本生成的 4 张测试图片已移到 `tests/legacy_exports/` 保留；此目录不进入交付包。若其他副本仍有 `exports`，其中只是旧版导出的图片。
 
 ## 已实现
 
@@ -41,7 +37,7 @@
 
 ## 从头构建
 
-建议 Python 3.11–3.13（本机验证为 3.13）。首次安装：
+建议使用 Python 3.11–3.13。首次构建可在 PowerShell 中运行：
 
 ```powershell
 python -m venv .venv
@@ -52,15 +48,7 @@ python build.py --download
 
 已有原始文件时执行 `python build.py`，会依次提取、重建、校验、生成 HTML。下载脚本对已存在文件不覆盖。
 
-本机代理曾使 TLS 失败，已通过 Windows curl 的直接连接完成下载。如遇同样问题，可执行：
-
-```powershell
-python build.py --download --curl --direct
-```
-
-`--direct` 绕过代理；`--curl` 使用 Windows curl 的 `--ssl-no-revoke` 以避开离线吊销查询，仍验证 HTTPS 证书。默认 Python 下载路径不修改 TLS 验证。其他操作系统通常不需要这两个选项。
-
-独立步骤：
+如需分别执行各阶段：
 
 ```powershell
 python scripts/download_data.py
@@ -75,35 +63,18 @@ python scripts/build_html.py
 ## 目录
 
 ```text
-raw_data/           原始 PDF、NIST 使用说明、下载 URL 与 SHA-256
+raw_data/           原始资料的下载记录；下载后存放文献 PDF
 processed_data/     CSV、model.json、排除原因、模型统计、验证报告
 scripts/           下载、PDF 提取、模型与离线网页生成
 src/geometry.py    几何剖分、边界筛选、两相混合；无物性方程
 web/               中文界面模板和交互脚本
 dist/index.html    可直接打开的离线网页
-tests/             数值校验、浏览器验收、截图及导出 PNG
+tests/             数值校验与浏览器验收脚本
 build.py           顺序构建入口
-Start-Water-PVT.cmd Windows 双击启动入口
-launch.py          可选的本机网页启动器（Python 标准库）
 DATA_SOURCES.md    数据字典、来源、精度与权利条件
 ```
 
-`raw_data/` 中的页面 PNG、版面文本是本地人工复核资料，不参与数值生成。GitHub 提交和分发压缩包只保留 `raw_data/manifest.json`；原始 PDF、网页存档与截图保留在本机，重新获取请运行 `python build.py --download`。测试截图、报告和本机缓存也不进入 GitHub 提交。
-
-## 发布到 GitHub
-
-先在 GitHub 网站创建空仓库，不要勾选自动生成 README、`.gitignore` 或许可证。然后在本项目目录运行：
-
-```powershell
-git init -b main
-git add .
-git status --short
-git commit -m "Initial release of water p-v-T atlas"
-git remote add origin https://github.com/你的用户名/仓库名.git
-git push -u origin main
-```
-
-执行 `git status --short` 时确认没有原始论文 PDF、`.venv/`、测试截图和本机导出文件。`git push` 可能要求通过浏览器登录 GitHub。上传仓库只发布源代码与构建好的 HTML；若还希望别人通过网页地址直接使用相图，需要另外配置 GitHub Pages。公开前也应确认自定义 `web/favicon.png` 的使用权，因为它会进入仓库并内嵌在 HTML 中。
+仓库保留 `raw_data/manifest.json` 中的来源链接和哈希，不附带原始论文 PDF、页面截图或全文提取文本。重新下载原始资料可运行 `python build.py --download`。
 
 ## 物理意义与几何方法
 
@@ -125,7 +96,7 @@ git push -u origin main
 4. **插值没有物性误差保证**：剖分筛选和边距约束是保守几何规则，重心取样不等于连续全域数学证明；稀疏区域不用于高精度物性计算。对数压力插值尤其在稀疏冰区只能作教学观察。
 5. **视图可能重叠**：二维投影不是单值函数；透明 WebGL 网格存在排序局限。可隐藏相区或使用专用细节视图。
 6. **定压实验只选公开压力行**：不提供任意 p 的物性求解；没有该压力表 3 数据时，只显示饱和相变段。
-7. **版权分开处理**：公开访问不等于开放再分发。冰论文保留在本地供复核，分发 ZIP 排除完整论文与截图，详见 DATA_SOURCES.md。项目代码的 MIT 许可不覆盖原文献。
+7. **来源权利独立**：仓库不包含原论文全文。代码的 MIT 许可不覆盖原文献及其内容；详见 DATA_SOURCES.md。
 
 可扩展方向：增加权利条件明确的公开低温蒸气与低压冰数值表、更多离开相界的冰密度列、约束剖分与误差可视化，以及带独立权威边界的其他冰晶型。
 
@@ -140,10 +111,6 @@ npm install --no-save playwright
 node tests/browser_smoke.cjs
 ```
 
-Windows 默认 Chrome 路径已配置；可用环境变量 `CHROME_PATH` 覆盖。测试脚本需要本地安装的 Playwright。测试以 `file://` 打开 HTML，并拦截 HTTP 请求以验证离线运行；实际操作投影、坐标切换、干度、图层、旋转、重置、来源，并模拟系统“另存为”接口检查默认文件名与 PNG 内容。报告在 `tests/browser_report.json`，截图在 `tests/overview.png`、`tests/condensed.png`。实际系统文件选择窗口仍需人工检查。
+Windows 测试脚本默认使用标准 Chrome 安装路径，其他安装位置可通过 `CHROME_PATH` 指定。浏览器测试以 `file://` 打开成品，检查主要交互及离线加载；测试截图和报告生成在 `tests/`，不会纳入仓库。
 
-交付前已在项目 `.venv` 中运行完整 `build.py`：从原始 PDF 重新提取、剖分、校验并生成网页，重建前后 `model.json` 的 SHA-256 完全一致，见 `tests/reproducibility_report.json`。自动浏览器测试通过，运行时 HTTP 请求数和页面错误数均为零。PNG / JSON 已实际导出到测试目录。
-
-2026-10-23 的 `tests/local_export_report.json` 与 `tests/local_export_zone_report.json` 是旧版本固定目录导出的历史验证记录，里面的原始 `exports` 路径已失效；图片现存于 `tests/legacy_exports/`。当前网页改用浏览器“另存为”，上述记录不代表当前导出方式的验证结果。
-
-可用 `python scripts/package_project.py` 生成交付压缩包 `water-pvt-project.zip`。压缩包包含源代码、CSV/JSON、离线网页和验证记录；原始论文/PDF 不打包，接收者需要从原始链接重新获取时执行 `python build.py --download`。
+可用 `python scripts/package_project.py` 生成包含源代码、结构化数据与离线网页的压缩包；原始论文 PDF 不打包。
